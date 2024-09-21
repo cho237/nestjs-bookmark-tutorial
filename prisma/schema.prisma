@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output = "../../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -18,11 +19,15 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  email String
+  email String @unique
   hash  String
 
   firstName String?
   lastName  String?
+
+  bookmarks    BookMark[]
+
+  @@map("users")
 }
 
 model BookMark {
@@ -33,4 +38,9 @@ model BookMark {
   title       String
   description String?
   link        String
+
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("bookmarks")
 }
