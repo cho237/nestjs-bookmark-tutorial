@@ -10,12 +10,10 @@
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:up": "docker compose up dev-db -d",
     "db:dev:restart": "pnpm db:dev:rm && pnpm db:dev:up && sleep 1 && pnpm prisma:dev:deploy",
-
     "prisma:test:deploy": "dotenv -e .env.test -- prisma migrate deploy",
     "db:test:rm": "docker compose rm test-db -s -f -v",
     "db:test:up": "docker compose up test-db -d",
     "db:test:restart": "pnpm db:test:rm && pnpm db:test:up && sleep 1 && pnpm prisma:test:deploy",
-
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -27,7 +25,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "pretest:e2e":"pnpm db:test:restart",
+    "pretest:e2e": "pnpm db:test:restart",
     "test:e2e": "dotenv -e .env.test -- jest --watch --no-cache --config ./test/jest-e2e.json"
   },
   "dependencies": {
@@ -37,6 +35,7 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/swagger": "^7.4.2",
     "@prisma/client": "^5.19.1",
     "argon2": "^0.41.1",
     "class-transformer": "^0.5.1",
